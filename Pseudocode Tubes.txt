@@ -1,0 +1,112 @@
+# pembuatan akun/rekening
+# start
+print("Selamat datang di Bank Philipp. Apakah anda sudah mempunyai akun?")
+jawaban = input()
+if (jawaban == iya) :
+	lanjut_ke_atm
+else :
+	buat_akun
+
+#buat_akun
+"Silahkan masukkan data-data dibawah ini"
+	nama_lengkap = input(nama_lengkap)
+	tanggal_lahir = input(tanggal_lahir) # format : DD/MM/YYYY
+	status_pin = False
+	while status_pin == False:
+		print('Masukkan PIN anda')
+		pin = input(PIN) # format : ABCDEF
+		print('Konfirmasikan kembali PIN anda')
+		pin_konfirmasi = input(PIN)
+		if (pin == pin_konfirmasi):
+			status_pin = True
+		else:
+			print('PIN anda salah.)
+	input(saldo_awal) (disclaimer : minimal saldo Rp50.000)
+if (saldo_awal<50.000) :
+	print("Saldo awal tidak mencukupi)
+print("Akun berhasil dibuat! apakah anda ingin melanjutkan transaksi?")
+if (iya) :
+	lanjut_ke_atm
+
+#Lanjut ke atm
+	#memilih bahasa
+	print("Pilih bahasa yang mau anda gunakan!)
+	Bahasa = input()
+		if (bahasa == indonesia)
+			atm_indonesia
+		elif (bahasa == english)
+			atm_english
+#atm_indonesia
+
+counter = 3
+status_pin_masuk = False
+while counter >= 0 and status_pin_masuk == False:
+	pin_masuk = input(print('Masukkan pin anda:"))
+	if (pin_masuk == pin) :
+		status_pin_masuk = True
+		print('Anda berhasil masuk')
+		lanjut_tahap selanjutnya
+	else :
+		counter -= 1
+		print(f'PIN yang dimasukkan salah. Silakan coba lagi. Anda memiliki {counter} kesempatan lagi')
+	if counter == 0:
+		print('Akun anda telah dikunci. Silakan atur ulang PIN anda.')	
+		print('Silakan konfirmasi kembali data pribadi anda.')
+		nama_lengkap_konfirmasi = input(nama_lengkap)
+		tanggal_lahir_konfirmasi = input(tanggal_lahir) format : DD/MM/YYYY
+		if (nama_lengkap == nama_lengkap_konfirmasi and tanggal_lahir == tanggal_lahir_konfirmasi):
+			status_pin = False
+			while status_pin == False:
+				print('Masukkan PIN baru anda')
+				pin = input(PIN) # format : ABCDEF
+				print('Konfirmasikan kembali PIN anda')
+				pin_konfirmasi = input(PIN)
+				if (pin == pin_konfirmasi):
+					status_pin = True
+					print('PIN berhasil diubah!')
+					counter = 3
+				else:
+					print('PIN anda salah.)
+
+# Menu 
+print('Pilih menu yang anda inginkan!')
+print('1. Informasi Saldo')
+print('2. Penarikan Tunai')
+print('3. Transfer')
+print('4. Voucher Isi Ulang')
+print('5. Pembayaran')
+print('6. Ganti PIN')
+print('7. E-Money')
+print('8. Pembelian')
+
+pilihan = input()
+
+if pilihan == 1:
+	# Tampilan saldo
+	print('Saldo Rekening Anda: ')
+	print(f'Rp {saldo}')
+
+	print('Lanjut Transaksi?')
+	lanjut = input()
+	if lanjut == True:
+		balik_ke_menu
+	else: 
+		exit
+elif pilihan == 2:
+	# Penarikan tunai
+elif pilihan == 3:
+	# Transfer
+elif pilihan == 4:
+	# Voucher Isi Ulang
+elif pilihan == 5:
+	# Pembayaran
+elif pilihan == 6:
+	# Ganti PIN
+elif pilihan == 7:
+	# E-Money
+elif pilihan == 8:
+	# Pembelian
+
+
+
+
