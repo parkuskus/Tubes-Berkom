@@ -39,7 +39,9 @@ while (saldo<50000) :
         print('Mohon maaf, saldo awal yang anda masukkan belum mencukupi batas minimal')
         saldo = int(input('Masukkan kembali saldo awal anda (Minimum saldo awal adalah 50.000): '))
 
+
 # Menampilkan kembali data-data yang sudah dimasukkan
+os.system('cls' if os.name == 'nt' else 'clear')
 print('Berikut adalah data-data pribadi anda!')
 scrolling_text(f'Nama Lengkap: {nama_lengkap}')
 scrolling_text(f'Tanggal Lahir: {tanggal_lahir}')
@@ -48,6 +50,7 @@ scrolling_text(f'Saldo Awal : {saldo}')
 
 
 #Memilih Bahasa pada ATM
+os.system('cls' if os.name == 'nt' else 'clear')
 print('PILIH BAHASA YANG ANDA INGIN GUNAKAN!')
 print('1. Indonesia')
 print('2. Inggris')
@@ -56,6 +59,7 @@ bahasa = int(input(('Pilih bahasa yang anda ingin gunakan!: ')))
 # ATM Bahasa Indonesia
 if (bahasa == 1) :
     # Mengecek PIN yang dimasukkan
+    os.system('cls' if os.name == 'nt' else 'clear')
     counter = 3
     status_pin_masuk = False
     while (counter>= 0) and (status_pin_masuk == False) :
@@ -82,7 +86,9 @@ if (bahasa == 1) :
                         counter = 3
                     else :
                         print('PIN anda salah!')
+                        
     # Menampilkan menu yang bisa dipilih
+    os.system('cls' if os.name == 'nt' else 'clear')     
     print('SILAHKAN PILIH MENU TRANSAKSI YANG ANDA INGINKAN!')
     print('1. Informasi Saldo')
     print('2. Penarikan Tunai')
@@ -93,10 +99,12 @@ if (bahasa == 1) :
     print('7. E-Money')
     print('8. Pembelian')
     
-    pilihan = str(input('Masukkan menu yang anda inginkan: '))
+    pilihan = int(input('Masukkan menu yang anda inginkan: '))
+    os.system('cls' if os.name == 'nt' else 'clear')     
 
     # Masuk ke menu-menu yang disediakan 
-    while (pilihan == 0) or (pilihan == 1) or (pilihan == 2) or (pilihan == 3) or (pilihan == 4) or (pilihan == 5) or (pilihan == 6) or (pilihan == 7) or (pilihan == 8) :
+    transaksi = True 
+    while ((pilihan == 0) or (pilihan == 1) or (pilihan == 2) or (pilihan == 3) or (pilihan == 4) or (pilihan == 5) or (pilihan == 6) or (pilihan == 7) or (pilihan == 8)) and transaksi == True:
         if (pilihan == 0) :
             print('SILAHKAN PILIH MENU TRANSAKSI YANG ANDA INGINKAN!')
             print('1. Informasi Saldo')
@@ -108,11 +116,13 @@ if (bahasa == 1) :
             print('7. E-Money')
             print('8. Pembelian')
             
-            pilihan = str(input('Masukkan menu yang anda inginkan: '))
+            pilihan = int(input('Masukkan menu yang anda inginkan: '))
+            os.system('cls' if os.name == 'nt' else 'clear')     
         elif (pilihan == 1) :
             print('HARAP MENUNGGU')
             print('TRANSAKSI ANDA SEDANG DIPROSES')
-            
+            time.sleep(2)
+            os.system('cls' if os.name == 'nt' else 'clear')            
             print('SALDO REKENING ANDA')
             print(f'RP. {saldo}')
         elif (pilihan == 2) :   
