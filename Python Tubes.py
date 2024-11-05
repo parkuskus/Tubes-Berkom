@@ -59,7 +59,7 @@ if (bahasa == 1) :
     counter = 3
     status_pin_masuk = False
     while (counter>= 0) and (status_pin_masuk == False) :
-        pin_masuk = int(input('Masukkan PIN anda: '))
+        pin_masuk = str(input('Masukkan PIN anda: '))
         if (pin_masuk == pin) :
             status_pin_masuk = True
             print('Anda berhasil masuk')
@@ -115,5 +115,4 @@ if (bahasa == 1) :
             
             print('SALDO REKENING ANDA')
             print(f'RP. {saldo}')
-            print('Philip Hamara')
             
