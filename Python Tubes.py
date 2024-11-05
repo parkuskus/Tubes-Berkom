@@ -115,5 +115,5 @@ if (bahasa == 1) :
             
             print('SALDO REKENING ANDA')
             print(f'RP. {saldo}')
-
+            print('Philip Hamara')
             
