@@ -1,6 +1,8 @@
 import os
 import time
+import random
 from datetime import datetime
+
 
 #Fungsi Fade Text di Terminal
 def scrolling_text(text, delay=0.05):
@@ -90,21 +92,18 @@ if (bahasa == 1) :
                         
     # Menampilkan menu yang bisa dipilih
     os.system('cls' if os.name == 'nt' else 'clear')     
-    print('SILAHKAN PILIH MENU TRANSAKSI YANG ANDA INGINKAN!')
+    print('SILAHKAN PILIH MENU TRANSAKSI YANG ANDA INGINKAN')
     print('1. Informasi Saldo')
     print('2. Penarikan Tunai')
     print('3. Transfer')
-    print('4. Voucher Isi Ulang')
-    print('5. Pembayaran')
-    print('6. Ganti PIN')
-    print('7. E-Money')
-    print('8. Pembelian')
+    print('4. Pembayaran')
+    print('5. Ganti PIN')
     
     pilihan = int(input('Masukkan menu yang anda inginkan: '))
     os.system('cls' if os.name == 'nt' else 'clear')     
 
     # Masuk ke menu-menu yang disediakan 
-    while ((pilihan == 0) or (pilihan == 1) or (pilihan == 2) or (pilihan == 3) or (pilihan == 4) or (pilihan == 5) or (pilihan == 6) or (pilihan == 7) or (pilihan == 8)):
+    while ((pilihan == 0) or (pilihan == 1) or (pilihan == 2) or (pilihan == 3) or (pilihan == 4) or (pilihan == 5)):
         if (pilihan == 0) :
             print('SILAHKAN PILIH MENU TRANSAKSI YANG ANDA INGINKAN!')
             print('1. Informasi Saldo')
@@ -347,9 +346,126 @@ if (bahasa == 1) :
                         pilihan = 0
                     else :
                         pilihan = 10
-        # elif (pilihan == 4) :
-        # elif (pilihan == 5) :
-        elif (pilihan == 6) :
+        elif (pilihan == 4) :
+            print('SILAHKAN PILIH')
+            print('JENIS PEMBAYARAN/PEMBELIAN')
+            print('1. Telepon/HP')
+            print('2. Listrik/PLN')
+            print('3. Air/PDAM')
+            pilih_pembayaran = int(input(''))
+
+            if (pilih_pembayaran == 1) :
+                print('SILAHKAN MASUKKAN')
+                print('NOMOR PELANGGAN/NOMOR')
+                print('TAGIHAN/KODE PEMBAYARAN/NOMOR HANDPHONE ANDA')
+                nomor_hp = int(input(''))
+
+                print('HARAP TUNGGU')
+                print('TRANSAKSI ANDA SEDANG DIPROSES')
+
+                daftar_pembelian = {
+                    '1' : 20000,            '5' : 150000,
+                    '2' : 25000,            '6' : 200000,
+                    '3' : 50000,            '7' : 300000,
+                    '4' : 100000,           
+                }
+                print('PILIH JUMLAH NOMIMAL')
+                print('1. 20.000            5. 150.000')
+                print('2. 25.000            6. 200.000')
+                print('3. 50.000            7. 300.000')
+                print('4. 100.000           8. LAINNYA')
+
+                nominal_isi_ulang = int(input(''))
+                admin_bank = 1000
+                total_isi_ulang = daftar_pembelian[nominal_isi_ulang] + admin_bank
+
+                print('HARAP TUNGGU')
+                print('TRANSAKSI ANDA SEDANG DIPROSES')
+
+                print('===========PEMBELIAN PULSA PRABAYAR===========')
+                print(f'Nomor Handphone     : {nomor_hp}')
+                print(f'Jumlah              : {daftar_pembelian[nominal_isi_ulang]}')
+                print(f'TOTAL               : {total_isi_ulang}')
+
+                print('PROSES TRANSAKSI (y/n)?: ')
+                proses_transaksi = str(input(''))
+
+                if (proses_transaksi == 'y') and (saldo<=total_isi_ulang) :
+                    print('HARAP TUNGGU')
+                    print('TRANSAKSI ANDA SEDANG DIPROSES')
+
+                    print('TRANSAKSI BERHASIL')
+                    print('BERIKUT ADALAH STRUK ANDA')
+
+                    print('=====================BANK TPB SUKSES======================')
+                    print('=================PEMBELIAN PULSA PRABAYAR=================')
+
+                    print(f'Nomor Handphone     : {nomor_hp}')
+                    print(f'Voucher Reff        : {random.randint(10000000000,99999999999)}')
+                    print(f'Jumlah              : {daftar_pembelian[nominal_isi_ulang]}')
+                    print(f'TOTAL               : {total_isi_ulang}')
+
+                    print('=========Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1=======')
+                    print('===========PROVIDER BERKOM MENYATAKAN STRUK INI===========')
+                    print('=============SEBAGAI BUKTI PEMBAYARAN YANG SAH============')
+                elif (proses_transaksi == 'y') and (saldo>total_isi_ulang) :
+                    print('MOHON MAAF SALDO ANDA TIDAK MENCUKUPI')
+                    print('APAKAH ANDA MAU MELAKUKAN TRANSAKSI LAIN?')
+                    
+                    status_transaksi = str(input('Konfirmasi (y/n): '))
+                    if (status_transaksi == 'y') :
+                        pilihan = 0
+                    else :
+                        pilihan = 10
+            elif (pilih_pembayaran == 2) :
+                print('MASUKKAN NOMOR METER ANDA')
+                nomor_meter     = int(input(''))
+                id_pelanggan    = random.randint(100000000000,999999999999)
+
+                print('HARAP TUNGGU')
+                print('TRANSAKSI ANDA SEDANG DIPROSES')
+
+                print('===========PEMBELIAN LISTRIK PRABAYAR===========')
+                print(f'Nomor Meter         : {nomor_meter}')
+                print(f'IDPEL               : {id_pelanggan}')
+                print(f'Nama                : {nama_lengkap}')
+                print(f'Tarif/Daya          : R1M / 900 VA')
+
+                daftar_pembelian = {
+                    '1' : 20000,            '5' : 500000,
+                    '2' : 50000,            '6' : 1000000,
+                    '3' : 100000,           '7' : 5000000,
+                    '4' : 200000,           '8' : 10000000,
+                }
+                print('PILIH JUMLAH NOMIMAL')
+                print('1. 20.000            5. 500.000')
+                print('2. 50.000            6. 1.000.000')
+                print('3. 100.000           7. 5.000.000')
+                print('4. 200.000           8. 10.000.000')
+
+                nominal_isi_ulang = int(input(''))
+                admin_bank = 1000
+                total_isi_ulang = daftar_pembelian[nominal_isi_ulang] + admin_bank
+
+                print('HARAP TUNGGU')
+                print('TRANSAKSI ANDA SEDANG DIPROSES')
+
+                print('BERIKUT ADALAH STRUK ANDA')
+
+                print('=====================BANK TPB SUKSES======================')
+                print('============STRUK PEMBELIAN LISTRIK PRABAYAR==============')
+                print(f'Nomor meter         : {nomor_meter}')
+                print(f'IDPEL               : {id_pelanggan}')
+                print(f'Nama Lengkap        : {daftar_pembelian[nominal_isi_ulang]}')
+                print(f'Total Bayar         : {total_isi_ulang}')
+                print(f'Stroom/Token        : {random.randint(1000,9999)}, {random.randint(1000,9999)}, {random.randint(1000,9999)}, {random.randint(1000,9999)}')
+                print(f'Admin Bank          : {admin_bank}')
+                print('=========Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1=======')
+                print('=================PLN MENYATAKAN STRUK INI=================')
+                print('=============SEBAGAI BUKTI PEMBAYARAN YANG SAH============')
+            # elif (pilih_pembayaran == 3) pembayaran pdam/air :
+                
+        elif (pilihan == 5) :
             status_pin_masuk = False
             while status_pin_masuk == False :
                 pin_masuk = str(input('Masukkan PIN anda: '))
@@ -379,9 +495,3 @@ if (bahasa == 1) :
                             print('PIN tidak sesuai!')
                 else :
                     print('PIN anda salah')
-                    
-
-                    
-                        
-        # elif (pilihan == 7) :
-        # elif (pilihan == 8) :
