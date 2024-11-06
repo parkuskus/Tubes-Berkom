@@ -86,7 +86,7 @@ if (bahasa == 1) :
                         print('PIN berhasil diubah!')
                         counter = 3
                     else :
-                        print('PIN anda salah!')
+                        print('PIN tidak sesuai!')
                         
     # Menampilkan menu yang bisa dipilih
     os.system('cls' if os.name == 'nt' else 'clear')     
@@ -104,8 +104,7 @@ if (bahasa == 1) :
     os.system('cls' if os.name == 'nt' else 'clear')     
 
     # Masuk ke menu-menu yang disediakan 
-    transaksi = True 
-    while ((pilihan == 0) or (pilihan == 1) or (pilihan == 2) or (pilihan == 3) or (pilihan == 4) or (pilihan == 5) or (pilihan == 6) or (pilihan == 7) or (pilihan == 8)) and transaksi == True:
+    while ((pilihan == 0) or (pilihan == 1) or (pilihan == 2) or (pilihan == 3) or (pilihan == 4) or (pilihan == 5) or (pilihan == 6) or (pilihan == 7) or (pilihan == 8)):
         if (pilihan == 0) :
             print('SILAHKAN PILIH MENU TRANSAKSI YANG ANDA INGINKAN!')
             print('1. Informasi Saldo')
@@ -126,7 +125,7 @@ if (bahasa == 1) :
             time.sleep(2)
             os.system('cls' if os.name == 'nt' else 'clear')            
             print('SALDO REKENING ANDA')
-            print(f'Rp {saldo:,}'.replace(',', '.'))
+            print(f'RP. {saldo:,}'.replace(',', '.'))
             print('')
             print('Lanjut Transaksi?')
             print('1. Ya')
@@ -135,7 +134,7 @@ if (bahasa == 1) :
             if lanjut == 1:
                 pilihan = 0
             else:
-                transaksi = False
+                pilihan = 10
             os.system('cls' if os.name == 'nt' else 'clear')   
             
         elif (pilihan == 2) :
@@ -161,6 +160,7 @@ if (bahasa == 1) :
                     saldo -= 50000
                     tunai = 50000
                     print('Anda telah berhasil menarik Rp 50.000')
+                    print(f'Sisa saldo di rekening anda adalah Rp {saldo:,}'.replace(',', '.'))
                     print('Apakah anda ingin mencetak receipt?')
                     print('1. Ya')
                     print('2. Tidak')
@@ -177,6 +177,7 @@ if (bahasa == 1) :
                     saldo -= 200000
                     tunai = 200000
                     print('Anda telah berhasil menarik Rp 200.000')
+                    print(f'Sisa saldo di rekening anda adalah Rp {saldo:,}'.replace(',', '.'))
                     print('Apakah anda ingin mencetak receipt?')
                     print('1. Ya')
                     print('2. Tidak')
@@ -193,6 +194,7 @@ if (bahasa == 1) :
                     saldo -= 500000
                     tunai = 500000
                     print('Anda telah berhasil menarik Rp 500.000')
+                    print(f'Sisa saldo di rekening anda adalah Rp {saldo:,}'.replace(',', '.'))
                     print('Apakah anda ingin mencetak receipt?')
                     print('1. Ya')
                     print('2. Tidak')
@@ -209,6 +211,7 @@ if (bahasa == 1) :
                     saldo -= 1000000
                     tunai = 1000000
                     print('Anda telah berhasil menarik Rp 1.000.000')
+                    print(f'Sisa saldo di rekening anda adalah Rp {saldo:,}'.replace(',', '.'))
                     print('Apakah anda ingin mencetak receipt?')
                     print('1. Ya')
                     print('2. Tidak')
@@ -242,6 +245,7 @@ if (bahasa == 1) :
                     saldo -= tunai
                     os.system('cls' if os.name == 'nt' else 'clear')   
                     print(f'Anda telah berhasil menarik Rp {tunai:,}'.replace(',', '.'))
+                    print(f'Sisa saldo di rekening anda adalah Rp {saldo:,}'.replace(',', '.'))
                     print('Apakah anda ingin mencetak receipt?')
                     print('1. Ya')
                     print('2. Tidak')
@@ -267,7 +271,7 @@ if (bahasa == 1) :
             if lanjut == 1:
                 pilihan = 0
             else:
-                transaksi = False
+                pilihan = 10
             os.system('cls' if os.name == 'nt' else 'clear')   
             
         elif (pilihan == 3) :
@@ -345,6 +349,39 @@ if (bahasa == 1) :
                         pilihan = 10
         # elif (pilihan == 4) :
         # elif (pilihan == 5) :
-        # elif (pilihan == 6) :
+        elif (pilihan == 6) :
+            status_pin_masuk = False
+            while status_pin_masuk == False :
+                pin_masuk = str(input('Masukkan PIN anda: '))
+                if (pin_masuk == pin) :
+                    status_pin_masuk = True
+                    status_pin = False 
+                    while (status_pin == False) :
+                        pin = str(input('Masukkan PIN baru anda: '))
+                        pin_konfirmasi = str(input('Konfirmasikan kembali PIN anda: '))
+                        if (pin == pin_konfirmasi) :
+                            os.system('cls' if os.name == 'nt' else 'clear')   
+                            status_pin = True
+                            print('PIN berhasil diubah!')
+                            print('')
+                            
+                            # Ingin lanjut bertransaksi?
+                            print('Lanjut Transaksi?')
+                            print('1. Ya')
+                            print('2. Tidak')
+                            lanjut = int(input())
+                            if lanjut == 1:
+                                pilihan = 0
+                            else:
+                                pilihan = 10
+                            os.system('cls' if os.name == 'nt' else 'clear')                               
+                        else :
+                            print('PIN tidak sesuai!')
+                else :
+                    print('PIN anda salah')
+                    
+
+                    
+                        
         # elif (pilihan == 7) :
         # elif (pilihan == 8) :
