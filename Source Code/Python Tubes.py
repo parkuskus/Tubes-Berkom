@@ -1,5 +1,6 @@
 import os
 import time
+from datetime import datetime
 
 #Fungsi Fade Text di Terminal
 def scrolling_text(text, delay=0.05):
@@ -46,7 +47,7 @@ print('Berikut adalah data-data pribadi anda!')
 scrolling_text(f'Nama Lengkap: {nama_lengkap}')
 scrolling_text(f'Tanggal Lahir: {tanggal_lahir}')
 scrolling_text(f'PIN : {pin}')
-scrolling_text(f'Saldo Awal : {saldo}')
+scrolling_text(f'Saldo Awal : {saldo:,}'.replace(',', '.'))
 
 
 #Memilih Bahasa pada ATM
@@ -117,15 +118,158 @@ if (bahasa == 1) :
             print('8. Pembelian')
             
             pilihan = int(input('Masukkan menu yang anda inginkan: '))
-            os.system('cls' if os.name == 'nt' else 'clear')     
+            os.system('cls' if os.name == 'nt' else 'clear')  
+               
         elif (pilihan == 1) :
             print('HARAP MENUNGGU')
             print('TRANSAKSI ANDA SEDANG DIPROSES')
             time.sleep(2)
             os.system('cls' if os.name == 'nt' else 'clear')            
             print('SALDO REKENING ANDA')
-            print(f'RP. {saldo}')
-        elif (pilihan == 2) :   
+            print(f'Rp {saldo:,}'.replace(',', '.'))
+            print('')
+            print('Lanjut Transaksi?')
+            print('1. Ya')
+            print('2. Tidak')
+            lanjut = int(input())
+            if lanjut == 1:
+                pilihan = 0
+            else:
+                transaksi = False
+            os.system('cls' if os.name == 'nt' else 'clear')   
+            
+        elif (pilihan == 2) :
+            print('MENU PENARIKAN CEPAT')
+            print('SILAKAN PILIH JUMLAH PENARIKAN')
+            print('1. Rp    50.000')
+            print('2. Rp   200.000')
+            print('3. Rp   500.000')
+            print('4. Rp 1.000.000')
+            print('5. JUMLAH LAIN')
+            tarik = int(input())
+            os.system('cls' if os.name == 'nt' else 'clear')
+            
+            # Penarikan Tunai Cepat
+            receipt = 0
+            
+            if tarik == 1:
+                print('HARAP MENUNGGU')
+                print('TRANSAKSI ANDA SEDANG DIPROSES')
+                time.sleep(2)
+                os.system('cls' if os.name == 'nt' else 'clear')       
+                if saldo >= 50000:
+                    saldo -= 50000
+                    tunai = 50000
+                    print('Anda telah berhasil menarik Rp 50.000')
+                    print('Apakah anda ingin mencetak receipt?')
+                    print('1. Ya')
+                    print('2. Tidak')
+                    receipt = int(input())
+                else:
+                    print('SALDO TIDAK MENCUKUPI')
+                    print('')            
+            elif tarik == 2:
+                print('HARAP MENUNGGU')
+                print('TRANSAKSI ANDA SEDANG DIPROSES')
+                time.sleep(2)
+                os.system('cls' if os.name == 'nt' else 'clear')   
+                if saldo >= 200000:
+                    saldo -= 200000
+                    tunai = 200000
+                    print('Anda telah berhasil menarik Rp 200.000')
+                    print('Apakah anda ingin mencetak receipt?')
+                    print('1. Ya')
+                    print('2. Tidak')
+                    receipt = int(input())
+                else:
+                    print('SALDO TIDAK MENCUKUPI')
+                    print('')             
+            elif tarik == 3:
+                print('HARAP MENUNGGU')
+                print('TRANSAKSI ANDA SEDANG DIPROSES')
+                time.sleep(2)
+                os.system('cls' if os.name == 'nt' else 'clear')   
+                if saldo >= 500000:
+                    saldo -= 500000
+                    tunai = 500000
+                    print('Anda telah berhasil menarik Rp 500.000')
+                    print('Apakah anda ingin mencetak receipt?')
+                    print('1. Ya')
+                    print('2. Tidak')
+                    receipt = int(input())
+                else:
+                    print('SALDO TIDAK MENCUKUPI')
+                    print('')             
+            elif tarik == 4:
+                print('HARAP MENUNGGU')
+                print('TRANSAKSI ANDA SEDANG DIPROSES')
+                time.sleep(2)
+                os.system('cls' if os.name == 'nt' else 'clear')   
+                if saldo >= 1000000:
+                    saldo -= 1000000
+                    tunai = 1000000
+                    print('Anda telah berhasil menarik Rp 1.000.000')
+                    print('Apakah anda ingin mencetak receipt?')
+                    print('1. Ya')
+                    print('2. Tidak')
+                    receipt = int(input())
+                else:
+                    print('SALDO TIDAK MENCUKUPI')
+                    print('')             
+            elif tarik == 5:
+                status_tarik = False
+                while status_tarik == False:   
+                    print('MASUKKAN JUMLAH PENARIKAN TUNAI YANG ANDA INGINKAN')
+                    print('(DALAM KELIPATAN RP 50.000)')
+                    print('MAKSIMAL RP 1.250.000')
+                    tunai = int(input('JUMLAH PENARIKAN: '))
+                    if tunai < 50000:
+                        print('NOMINAL YANG DIINPUT TIDAK MENCUKUPI')
+                        print('')
+                    elif tunai > 1250000:
+                        print('NOMINAL YANG DIINPUT TERLALU BESAR')
+                        print('')
+                    elif tunai % 50000 != 0:
+                        print('NOMINAL TIDAK VALID')
+                        print('')
+                    elif saldo < tunai:
+                        print('SALDO TIDAK MENCUKUPI')
+                        print('')
+                    else: 
+                        status_tarik = True
+                
+                if status_tarik == True:
+                    saldo -= tunai
+                    os.system('cls' if os.name == 'nt' else 'clear')   
+                    print(f'Anda telah berhasil menarik Rp {tunai:,}'.replace(',', '.'))
+                    print('Apakah anda ingin mencetak receipt?')
+                    print('1. Ya')
+                    print('2. Tidak')
+                    receipt = int(input())
+                    os.system('cls' if os.name == 'nt' else 'clear')  
+
+            # Mencetak receipt
+            
+            if receipt == 1:
+                waktu = datetime.now().isoformat(' ', 'seconds')
+                print('---------------------------------------------------')
+                print('TARIK TUNAI')
+                print(f'JUMLAH            : {tunai:,}'.replace(',', '.'))
+                print(f'SISA SALDO        : {saldo:,}'.replace(',', '.'))
+                print(f'WAKTU TRANSAKSI   : {waktu}')
+                print('---------------------------------------------------')
+                
+            # Ingin lanjut bertransaksi?
+            print('Lanjut Transaksi?')
+            print('1. Ya')
+            print('2. Tidak')
+            lanjut = int(input())
+            if lanjut == 1:
+                pilihan = 0
+            else:
+                transaksi = False
+            os.system('cls' if os.name == 'nt' else 'clear')   
+            
         elif (pilihan == 3) :
             print('ATM TRANSFER')
             print('MASUKKAN KODE BANK DAN')
@@ -163,12 +307,13 @@ if (bahasa == 1) :
             print('3 nomor diawal kode bank diikuti dengan 5 nomor rekening bank')
             print('Cth. 00112345')
 
+            status_transfer = 'n'
             while (status_transfer == 'n') :
                 rekening_tujuan = str(input('Nomor Rekening: '))
                 kode_bank = rekening_tujuan[:3]
                 nama_penerima = str(input('Nama Penerima: '))
                 nomimal_transfer = int(input('Masukkan Jumlah Nominal Yang  Akan Ditransfer: '))
-                while (nomimal_transfer<saldo) :
+                while (nomimal_transfer>saldo) :
                     print('MOHON MAAF, SALDO ANDA TIDAK MENCUKUPI')
                     nomimal_transfer = int(input('Masukkan Kembali Nominal  Yang Akan Ditransfer: '))
 
@@ -182,7 +327,7 @@ if (bahasa == 1) :
                 print(f'Bank            : {kumpulan_bank[kode_bank]}')
                 print(f'Tujuan          : {rekening_tujuan}')
                 print(f'Penerima        : {nama_penerima}')
-                print(f'Jumlah Transfer : {nomimal_transfer}')
+                print(f'Jumlah Transfer : {nomimal_transfer:,}'.replace(',', '.'))
                 print('---------------------------------------------------')
 
                 status_transfer= str(input(('Apakah data sudah sesuai (y/n)?    :')))
@@ -198,8 +343,8 @@ if (bahasa == 1) :
                         pilihan = 0
                     else :
                         pilihan = 10
-        elif (pilihan == 4) :
-        elif (pilihan == 5) :
-        elif (pilihan == 6) :
-        elif (pilihan == 7) :
-        elif (pilihan == 8) :
+        # elif (pilihan == 4) :
+        # elif (pilihan == 5) :
+        # elif (pilihan == 6) :
+        # elif (pilihan == 7) :
+        # elif (pilihan == 8) :
