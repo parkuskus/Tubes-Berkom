@@ -42,6 +42,15 @@ while (saldo<50000) :
         print('Mohon maaf, saldo awal yang anda masukkan belum mencukupi batas minimal')
         saldo = int(input('Masukkan kembali saldo awal anda (Minimum saldo awal adalah 50.000): '))
 
+# Menampilkan kembali data-data yang sudah dimasukkan
+os.system('cls' if os.name == 'nt' else 'clear')
+print('Berikut adalah data-data pribadi anda!')
+scrolling_text(f'Nama Lengkap: {nama_lengkap}')
+scrolling_text(f'Tanggal Lahir: {tanggal_lahir}')
+scrolling_text(f'PIN : {pin}')
+scrolling_text(f'Saldo Awal : {saldo:,}'.replace(',', '.'))
+
+
 # TAHAP ATM
 
 # Memasukkan Kartu
@@ -70,15 +79,6 @@ for i in range(len(card), 0, -1):
 os.system('cls' if os.name == 'nt' else 'clear')  
 print("Kartu berhasil dimasukkan!")
 time.sleep(2)
-
-# Menampilkan kembali data-data yang sudah dimasukkan
-os.system('cls' if os.name == 'nt' else 'clear')
-print('Berikut adalah data-data pribadi anda!')
-scrolling_text(f'Nama Lengkap: {nama_lengkap}')
-scrolling_text(f'Tanggal Lahir: {tanggal_lahir}')
-scrolling_text(f'PIN : {pin}')
-scrolling_text(f'Saldo Awal : {saldo:,}'.replace(',', '.'))
-
 
 #Memilih Bahasa pada ATM
 os.system('cls' if os.name == 'nt' else 'clear')
