@@ -252,7 +252,6 @@ if (bahasa == 1) :
                     os.system('cls' if os.name == 'nt' else 'clear')  
 
             # Mencetak receipt
-            
             if receipt == 1:
                 waktu = datetime.now().isoformat(' ', 'seconds')
                 print('---------------------------------------------------')
@@ -369,6 +368,7 @@ if (bahasa == 1) :
                     '3' : 50000,            '7' : 300000,
                     '4' : 100000,           
                 }
+
                 print('PILIH JUMLAH NOMIMAL')
                 print('1. 20.000            5. 150.000')
                 print('2. 25.000            6. 200.000')
@@ -390,7 +390,7 @@ if (bahasa == 1) :
                 print('PROSES TRANSAKSI (y/n)?: ')
                 proses_transaksi = str(input(''))
 
-                if (proses_transaksi == 'y') and (saldo<=total_isi_ulang) :
+                if (proses_transaksi == 'y') and (saldo>=total_isi_ulang) :
                     print('HARAP TUNGGU')
                     print('TRANSAKSI ANDA SEDANG DIPROSES')
 
@@ -408,7 +408,14 @@ if (bahasa == 1) :
                     print('=========Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1=======')
                     print('===========PROVIDER BERKOM MENYATAKAN STRUK INI===========')
                     print('=============SEBAGAI BUKTI PEMBAYARAN YANG SAH============')
-                elif (proses_transaksi == 'y') and (saldo>total_isi_ulang) :
+
+                    print('APAKAH ANDA MAU MELAKUKAN TRANSAKSI LAIN?')
+                    status_transaksi = str(input('Konfirmasi (y/n): '))
+                    if (status_transaksi == 'y') :
+                        pilihan = 0
+                    else :
+                        pilihan = 10
+                elif (proses_transaksi == 'y') and (saldo<total_isi_ulang) :
                     print('MOHON MAAF SALDO ANDA TIDAK MENCUKUPI')
                     print('APAKAH ANDA MAU MELAKUKAN TRANSAKSI LAIN?')
                     
@@ -417,6 +424,10 @@ if (bahasa == 1) :
                         pilihan = 0
                     else :
                         pilihan = 10
+                else :
+                    print('MOHON TUNGGU SEBENTAR')
+                    print('ANDA AKAN DIALIHKAN KE MENU UTAMA')
+                    pilihan = 0
             elif (pilih_pembayaran == 2) :
                 print('MASUKKAN NOMOR METER ANDA')
                 nomor_meter     = int(input(''))
@@ -447,24 +458,131 @@ if (bahasa == 1) :
                 admin_bank = 1000
                 total_isi_ulang = daftar_pembelian[nominal_isi_ulang] + admin_bank
 
+                if (saldo>=total_isi_ulang) :
+                    print('HARAP TUNGGU')
+                    print('TRANSAKSI ANDA SEDANG DIPROSES')
+
+                    print('TRANSAKSI TELAH BERHASIL')
+                    print('BERIKUT ADALAH STRUK ANDA')
+
+                    print('=====================BANK TPB SUKSES======================')
+                    print('============STRUK PEMBELIAN LISTRIK PRABAYAR==============')
+                    print(f'Nomor meter         : {nomor_meter}')
+                    print(f'IDPEL               : {id_pelanggan}')
+                    print(f'Nama Lengkap        : {daftar_pembelian[nominal_isi_ulang]}')
+                    print(f'Total Bayar         : {total_isi_ulang}')
+                    print(f'Stroom/Token        : {random.randint(1000,9999)}, {random.randint(1000,9999)}, {random.randint(1000,9999)}, {random.randint(1000,9999)}')
+                    print(f'Admin Bank          : {admin_bank}')
+                    print('=========Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1=======')
+                    print('=================PLN MENYATAKAN STRUK INI=================')
+                    print('=============SEBAGAI BUKTI PEMBAYARAN YANG SAH============')
+
+                    print('APAKAH ANDA MAU MELAKUKAN TRANSAKSI LAIN?')
+                    status_transaksi = str(input('Konfirmasi (y/n): '))
+                    if (status_transaksi == 'y') :
+                        pilihan = 0
+                    else :
+                        pilihan = 10
+                else :
+                    print('MOHON MAAF SALDO ANDA TIDAK MENCUKUPI')
+                    print('APAKAH ANDA MAU MELAKUKAN TRANSAKSI LAIN?')
+                    
+                    status_transaksi = str(input('Konfirmasi (y/n): '))
+                    if (status_transaksi == 'y') :
+                        pilihan = 0
+                    else :
+                        pilihan = 10
+            elif (pilih_pembayaran == 3) :
+                print('MASUKKAN KODE PERUSAHAAN')
+                print('DIIKUTI NOMOR PELANGGAN ANDA')
+                print('CONTOH')
+                print('Kode Perusahaan  : 1300')
+                print('No Pelanggan     : 1234567890')
+                print('Tekan            : 13001234567890')
+
+                status_kode = str(input('Apakah anda ingin melihat daftar kode air minum/PDAM (y/n)? ')))
+
+                kode_perusahaan = {
+                    452 : 'PAM KOTA BOGOR'   , 453 : 'PAM KOTA CIREBON',
+                    456 : 'PAM KOTA CIANJUR' , 458 : 'PAM KOTA SUBANG' ,
+                    465 : 'PAM KOTA KUNINGAN', 476 : 'PAM KOTA CILEGON',
+                    480 : 'PAM KOTA SUMEDANG', 489 : 'PAM KOTA DEPOK'  ,
+                    492 : 'PAM KOTA SUKABUMI', 499 : 'PAM KOTA BANDUNG',
+                }
+                while (status_kode == 'y') :
+                    print('DAFTAR KODE PERUSAHAAN')
+                    print('PAM KOTA BOGOR               452')
+                    print('PAM KOTA CIREBON             453')
+                    print('PAM KAB CIANJUR              456')
+                    print('PAM KAB SUBANG               458')
+                    print('PAM KAB KUNINGAN             465')
+                    print('PAM KOTA CILEGON             476')
+                    print('PAM KAB SUMENDANG            480')
+                    print('PAM KOTA DEPOK               489')
+                    print('PAM KOTA SUKABUMI            494')
+                    print('PAM KAB BANDUNG              499')
+                    status_kode = str(input('Apakah anda ingin melanjutkan transaksi (y/n)? '))
+
+                print('MASUKKAN KODE PERUSAHAAN')
+                print('DIIKUTI NOMOR PELANGGAN ANDA')
+                print('CONTOH')
+                print('Kode Perusahaan  : 1300')
+                print('No Pelanggan     : 1234567890')
+                print('Tekan            : 13001234567890') 
+                nomor_pelanggan = str(input(''))
+                tagihan       = random.randint(0,saldo)
+                biaya_admin   = 0
+                total_bayar   = tagihan + biaya_admin
+                 
                 print('HARAP TUNGGU')
                 print('TRANSAKSI ANDA SEDANG DIPROSES')
 
-                print('BERIKUT ADALAH STRUK ANDA')
+                print('KONFIRMASI PEMBAYARAN')
+                print(f'TAGIHAN {kode_perusahaan[nomor_pelanggan[:3]]}')
+                print(f'No Pelanggan     : {nomor_pelanggan[3:]}')
+                print(f'Nama             : {nama_lengkap}')
+                print(f'Tagihan          : {tagihan}')
+                print(f'Biaya admin      : {biaya_admin}')
+                print(f'Total Bayar      : {total_bayar}')
 
-                print('=====================BANK TPB SUKSES======================')
-                print('============STRUK PEMBELIAN LISTRIK PRABAYAR==============')
-                print(f'Nomor meter         : {nomor_meter}')
-                print(f'IDPEL               : {id_pelanggan}')
-                print(f'Nama Lengkap        : {daftar_pembelian[nominal_isi_ulang]}')
-                print(f'Total Bayar         : {total_isi_ulang}')
-                print(f'Stroom/Token        : {random.randint(1000,9999)}, {random.randint(1000,9999)}, {random.randint(1000,9999)}, {random.randint(1000,9999)}')
-                print(f'Admin Bank          : {admin_bank}')
-                print('=========Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1=======')
-                print('=================PLN MENYATAKAN STRUK INI=================')
-                print('=============SEBAGAI BUKTI PEMBAYARAN YANG SAH============')
-            # elif (pilih_pembayaran == 3) pembayaran pdam/air :
-                
+                konfirmasi_pembayaran = str(input('Ingin Melanjutkan Pembayaran (y/n)? '))
+                if(konfirmasi_pembayaran == 'y') and (saldo>=total_bayar):
+                    print('HARAP TUNGGU')
+                    print('TRANSAKSI ANDA SEDANG DIPROSES')
+
+                    print('TRANSAKSI TELAH BERHASIL')
+                    print('Berikut adalah struk anda')
+                    print('=====================BANK TPB SUKSES======================')
+                    print('================STRUK PEMBAYARAN AIR/PDAM===============')
+                    print(f'Nomor meter         : {nomor_pelanggan}')
+                    print(f'Nama                : {nama_lengkap}')
+                    print(f'Tagihan          : {tagihan}')
+                    print(f'Biaya admin      : {biaya_admin}')
+                    print(f'Total Bayar      : {total_bayar}')
+                    print('=========Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1=======')
+                    print('=================PDAM MENYATAKAN STRUK INI=================')
+                    print('=============SEBAGAI BUKTI PEMBAYARAN YANG SAH============')
+
+                    print('APAKAH ANDA INGIN MELANJUTKAN TRANSAKSI (y/n)?')
+                    lanjut_transaksi = str(input(''))
+
+                    if (lanjut_transaksi == 'y') :
+                        pilihan = 0
+                    else :
+                        pilihan = 10
+                elif (konfirmasi_pembayaran == 'y') and (saldo<total_bayar) :
+                    print('MOHON MAAF SALDO ANDA TIDAK MENCUKUPI')
+                    print('APAKAH ANDA MAU MELAKUKAN TRANSAKSI LAIN?')
+                    
+                    status_transaksi = str(input('Konfirmasi (y/n): '))
+                    if (status_transaksi == 'y') :
+                        pilihan = 0
+                    else :
+                        pilihan = 10
+                else :
+                    print('MOHON TUNGGU SEBENTAR')
+                    print('ANDA AKAN DIALIHKAN KE MENU UTAMA')
+                    pilihan = 0
         elif (pilihan == 5) :
             status_pin_masuk = False
             while status_pin_masuk == False :
