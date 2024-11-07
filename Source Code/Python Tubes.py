@@ -12,7 +12,7 @@ def scrolling_text(text, delay=0.05):
         time.sleep(delay)
 
 #Menyambut pengguna
-print('SELAMAT DATANG DI BANK PERMATA SARI')
+print('SELAMAT DATANG DI BANK TPB SUKSES')
 time.sleep(2)
 
 # Membuat akun 
@@ -98,6 +98,7 @@ if (bahasa == 1) :
     print('3. Transfer')
     print('4. Pembayaran')
     print('5. Ganti PIN')
+    print('6. Selesai Transaksi')
     
     pilihan = int(input('Masukkan menu yang anda inginkan: '))
     os.system('cls' if os.name == 'nt' else 'clear')     
