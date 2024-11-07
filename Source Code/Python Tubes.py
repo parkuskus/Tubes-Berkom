@@ -42,6 +42,34 @@ while (saldo<50000) :
         print('Mohon maaf, saldo awal yang anda masukkan belum mencukupi batas minimal')
         saldo = int(input('Masukkan kembali saldo awal anda (Minimum saldo awal adalah 50.000): '))
 
+# TAHAP ATM
+
+# Memasukkan Kartu
+os.system('cls' if os.name == 'nt' else 'clear')
+print("Silakan masukkan kartu Anda untuk memulai.")
+input("Tekan Enter untuk memasukkan kartu...")
+
+card = [
+            "|=============|",
+            "|             |",
+            "|             |",
+            "|    KARTU    |",
+            "|     ATM     |",
+            "|             |",
+            "|             |",
+            "|=============|"
+        ]
+
+# Cetak kartu 
+for i in range(len(card), 0, -1):
+    os.system('cls' if os.name == 'nt' else 'clear')  
+    for line in card[-i:]:
+        print(line)
+    time.sleep(0.2)
+    
+os.system('cls' if os.name == 'nt' else 'clear')  
+print("Kartu berhasil dimasukkan!")
+time.sleep(2)
 
 # Menampilkan kembali data-data yang sudah dimasukkan
 os.system('cls' if os.name == 'nt' else 'clear')
@@ -614,3 +642,28 @@ if (bahasa == 1) :
                             print('PIN tidak sesuai!')
                 else :
                     print('PIN anda salah')
+                    
+    print('Silakan Ambil Kartu Anda')
+    print('')
+    time.sleep(0.3)
+    card = [
+                "|=============|",
+                "|             |",
+                "|             |",
+                "|    KARTU    |",
+                "|     ATM     |",
+                "|             |",
+                "|             |",
+                "|=============|"
+            ]
+    # Cetak kartu 
+    for i in range(len(card)):
+        os.system('cls' if os.name == 'nt' else 'clear')
+        # Cetak bagian bawah kartu bertahap hingga ke atas
+        for line in card[-(i+1):]:
+            print(line)
+        time.sleep(0.2)
+
+    print('')
+    print('Terima Kasih telah menggunakan ATM BANK TPB SUKSES')
+    time.sleep(3)
