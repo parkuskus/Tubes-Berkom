@@ -5,13 +5,6 @@ import sys
 from datetime import datetime
 
 
-#Fungsi Fade Text di Terminal
-def scrolling_text(text, delay=0.02):
-    for i in range(len(text) + 1):
-        os.system('cls' if os.name == 'nt' else 'clear')  # Bersihkan terminal
-        print(text[:i])  # Cetak sebagian teks
-        time.sleep(delay)
-
 #Fungsi Typing Effect di Terminal
 def typing_effect(text, delay=0.05):
     for char in text:
@@ -36,10 +29,10 @@ tanggal_lahir   = str(input('Tanggal Lahir (DD/MM/YYYY): '))
 status_pin = False 
 while (status_pin == False) :
     pin = str(input('Silahkan buat PIN anda: '))
-    pin_konfirmasi = str(input(('Masukkan kembali PIN yang telah anda buat: ')))
+    pin_konfirmasi = str(input(('Masukkan kembali PIN yang telah anda buat: '))) #Konfimasi PIN yang telah dibuat
     if (pin == pin_konfirmasi) :
         status_pin = True
-    else :
+    else : #Alert jika PIN yang dikonfirmasi berbeda dengan PIN yang dibuat
         time.sleep(2)
         os.system('cls' if os.name == 'nt' else 'clear')
         print('PIN yang anda masukkan belum sama. Silahkan masukkan kembali PIN anda')
@@ -52,7 +45,6 @@ while (saldo<50000) :
     saldo = int(input('Masukkan kembali saldo awal (minimum 50.000): '))
 
 # Menampilkan kembali data-data yang sudah dimasukkan
-'''
 os.system('cls' if os.name == 'nt' else 'clear')
 typing_effect('Berikut adalah data-data pribadi anda!')
 typing_effect(f'Nama Lengkap    : {nama_lengkap}')
@@ -60,9 +52,8 @@ typing_effect(f'Tanggal Lahir   : {tanggal_lahir}')
 typing_effect(f'PIN             : {pin}')
 typing_effect(f'Saldo Awal      : Rp{saldo:,}'.replace(',', '.'))
 time.sleep(4)
-'''
-# TAHAP ATM
 
+# TAHAP ATM
 # Memasukkan Kartu
 os.system('cls' if os.name == 'nt' else 'clear')
 print("Silakan masukkan kartu Anda untuk memulai.")
@@ -91,7 +82,6 @@ print("Kartu berhasil dimasukkan!")
 time.sleep(2)
 
 #Memilih Bahasa pada ATM
-
 os.system('cls' if os.name == 'nt' else 'clear')
 print('PILIH BAHASA YANG ANDA INGIN GUNAKAN!')
 print('1. Indonesia')
@@ -100,21 +90,22 @@ bahasa = int(input(('Pilih bahasa yang anda ingin gunakan!: ')))
 
 # ATM Bahasa Indonesia
 if (bahasa == 1) :
-    # Mengecek PIN yang dimasukkan
+    # Memasukkan dan Mengecek PIN yang dimasukkan
     os.system('cls' if os.name == 'nt' else 'clear')
     counter = 2
     status_pin_masuk = False
     while (counter>= 0) and (status_pin_masuk == False) :
-        pin_masuk = str(input('Masukkan PIN anda: '))
-        if (pin_masuk == pin) and (counter>0) :
+        pin_masuk = str(input('Masukkan PIN anda: ')) 
+        if (pin_masuk == pin) and (counter>0) : 
             status_pin_masuk = True
             print('Anda berhasil masuk')
-        elif (counter == 0) :
+        elif (counter == 0) : # Mengunci akun dan melakukan recovery akun
             os.system('cls' if os.name == 'nt' else 'clear') 
             print('Akun anda telah dikunci. Silahkan atur ulang PIN anda.')
             print('Silakan konfirmasi kembali data pribadi anda.')
             nama_lengkap_konfirmasi = str(input('Nama Lengkap: '))
             tanggal_lahir_konfirmasi = str(input('Tanggal Lahir: '))
+            # Mengatur ulang PIN dengan memasukkan data-data pribadi (nama, tanggal lahir)
             if (nama_lengkap == nama_lengkap_konfirmasi) and (tanggal_lahir == tanggal_lahir_konfirmasi) :
                 status_pin = False 
                 while (status_pin == False) :
@@ -127,7 +118,7 @@ if (bahasa == 1) :
                     else :
                         print('PIN tidak sesuai!')
                         os.system('cls' if os.name == 'nt' else 'clear') 
-            else :
+            else :# Menanyakan ulang data-data pribadi jika sebelumnya data yang diberikan di awal salah
                 while (nama_lengkap_konfirmasi != nama_lengkap) and (tanggal_lahir_konfirmasi != tanggal_lahir) :
                     print('Akun anda telah dikunci. Silahkan atur ulang PIN anda.')
                     print('Silakan konfirmasi kembali data pribadi anda.')
@@ -148,7 +139,7 @@ if (bahasa == 1) :
                         else :
                             print('PIN tidak sesuai!')
                             os.system('cls' if os.name == 'nt' else 'clear') 
-        else :
+        else : # Alert ketika user salah memasukkkan PIN
             counter -= 1
             print(f'PIN yang dimasukkan salah. Silakan coba lagi. Anda memiliki {counter+1} kesempatan lagi')
                         
@@ -179,15 +170,20 @@ if (bahasa == 1) :
             
             pilihan = int(input('Masukkan menu yang anda inginkan: '))
             os.system('cls' if os.name == 'nt' else 'clear')  
-               
+        
+        # Menu informasi saldo       
         elif (pilihan == 1) :
             print('HARAP MENUNGGU')
             print('TRANSAKSI ANDA SEDANG DIPROSES')
             time.sleep(2)
-            os.system('cls' if os.name == 'nt' else 'clear')            
+            os.system('cls' if os.name == 'nt' else 'clear')   
+
+            # Menampilkan saldo rekening         
             print('SALDO REKENING ANDA')
             print(f'RP.{saldo:,}'.replace(',', '.'))
             print('')
+            
+            # Konfirmasi lanjut transaksi/tidak?
             print('Lanjut Transaksi?')
             print('1. Ya')
             print('2. Tidak')
@@ -197,7 +193,8 @@ if (bahasa == 1) :
             else:
                 pilihan = 10
             os.system('cls' if os.name == 'nt' else 'clear')   
-            
+
+        # Menu penarikan tunai 
         elif (pilihan == 2) :
             print('MENU PENARIKAN CEPAT')
             print('SILAKAN PILIH JUMLAH PENARIKAN')
@@ -212,6 +209,7 @@ if (bahasa == 1) :
             # Penarikan Tunai Cepat
             receipt = 0
             
+            # Mengambil Rp50.000
             if tarik == 1:
                 print('HARAP MENUNGGU')
                 print('TRANSAKSI ANDA SEDANG DIPROSES')
@@ -228,7 +226,9 @@ if (bahasa == 1) :
                     receipt = int(input())
                 else:
                     print('SALDO TIDAK MENCUKUPI')
-                    print('')            
+                    print('')     
+
+            # Mengambil Rp200.000       
             elif tarik == 2:
                 print('HARAP MENUNGGU')
                 print('TRANSAKSI ANDA SEDANG DIPROSES')
@@ -245,7 +245,9 @@ if (bahasa == 1) :
                     receipt = int(input())
                 else:
                     print('SALDO TIDAK MENCUKUPI')
-                    print('')             
+                    print('')     
+
+            # Mengambil Rp500.000          
             elif tarik == 3:
                 print('HARAP MENUNGGU')
                 print('TRANSAKSI ANDA SEDANG DIPROSES')
@@ -262,7 +264,9 @@ if (bahasa == 1) :
                     receipt = int(input())
                 else:
                     print('SALDO TIDAK MENCUKUPI')
-                    print('')             
+                    print('')    
+
+            # Mengambil Rp1.000.000           
             elif tarik == 4:
                 print('HARAP MENUNGGU')
                 print('TRANSAKSI ANDA SEDANG DIPROSES')
@@ -279,7 +283,8 @@ if (bahasa == 1) :
                     receipt = int(input())
                 else:
                     print('SALDO TIDAK MENCUKUPI')
-                    print('')             
+                    print('')    
+            # Mengambil selain pilihan sebelumnya (harus kelipatan 50.000, maks Rp1.250.000)         
             elif tarik == 5:
                 status_tarik = False
                 while status_tarik == False:   
@@ -306,6 +311,7 @@ if (bahasa == 1) :
                         if konfirmasi_tarik == 'y':
                             status_tarik = True
                 
+                # Mencetak sisa saldo setelah tarik tunai
                 if status_tarik == True:
                     os.system('cls' if os.name == 'nt' else 'clear')  
                     print('HARAP MENUNGGU')
@@ -343,6 +349,7 @@ if (bahasa == 1) :
                 pilihan = 10
             os.system('cls' if os.name == 'nt' else 'clear')   
             
+        # Menu transfer
         elif (pilihan == 3) :
             typing_effect('===================ATM TRANSFER===================')
             typing_effect('==============MASUKKAN KODE BANK DAN==============')
@@ -354,6 +361,7 @@ if (bahasa == 1) :
             print('Apakah anda ingin melihat kode bank terlebih dahulu (y/n)?')
             cek_kode_bank = str(input(''))
 
+            # Mencetak daftar kode bank
             os.system('cls' if os.name == 'nt' else 'clear') 
             kumpulan_bank = {
                 '001':'BRI',        '007' : 'MANDIRI',
@@ -386,6 +394,8 @@ if (bahasa == 1) :
             print('Cth. 00112345')
             print('')
             status_transfer = 'n'
+
+            # Memasukkan nomor rekening tujuan
             while (status_transfer == 'n') :
                 rekening_tujuan = str(input('Nomor Rekening Tujuan: '))
                 kode_bank = rekening_tujuan[:3]
@@ -399,7 +409,8 @@ if (bahasa == 1) :
                 print('TRANSAKSI ANDA SEDANG DIPROSES')
                 time.sleep(2)
                 os.system('cls' if os.name == 'nt' else 'clear')   
-
+                
+                # Konfirmasi data transfer
                 print('---------------------------------------------------')
                 print('TRANSFER ATM')
                 print(f'Bank            : {kumpulan_bank[kode_bank]}')
@@ -416,8 +427,9 @@ if (bahasa == 1) :
                     print('TRANSAKSI ANDA SEDANG DIPROSES')
                     time.sleep(2)
                     os.system('cls' if os.name == 'nt' else 'clear')   
-
                     waktu = datetime.now().isoformat(' ', 'seconds')
+
+                    # Mencetak struk transfer
                     print('====================================================')
                     typing_effect('TRANSFER ATM')
                     typing_effect(f'Bank            : {kumpulan_bank[kode_bank]}')
@@ -439,6 +451,7 @@ if (bahasa == 1) :
                     else :
                         pilihan = 10
 
+        # Menu pembayaran (Telepon, PLN, dan PDAM)
         elif (pilihan == 4) :
             print('----------------------SILAHKAN PILIH----------------------')
             print('---------------JENIS PEMBAYARAN/PEMBELIAN-----------------')
@@ -448,6 +461,7 @@ if (bahasa == 1) :
             pilih_pembayaran = int(input(''))
             os.system('cls' if os.name == 'nt' else 'clear')   
 
+            # Pembayaran telepon/HP
             if (pilih_pembayaran == 1) :
                 print('SILAHKAN MASUKKAN')
                 print('NOMOR PELANGGAN/NOMOR')
@@ -467,6 +481,7 @@ if (bahasa == 1) :
                     '4' : 100000,           
                 }
 
+                # Mencetak nominal transfer
                 print('PILIH JUMLAH NOMIMAL')
                 print('1. 20.000            5. 150.000')
                 print('2. 25.000            6. 200.000')
@@ -479,7 +494,7 @@ if (bahasa == 1) :
                 admin_bank = 1000
                 total_isi_ulang = daftar_pembelian[nominal_isi_ulang] + admin_bank
 
-
+                # Konfirmasi sebelum transaksi
                 os.system('cls' if os.name == 'nt' else 'clear')   
                 print('===========PEMBELIAN PULSA PRABAYAR===========')
                 print(f'Nomor Handphone     : {nomor_hp}')
@@ -490,6 +505,7 @@ if (bahasa == 1) :
                 proses_transaksi = str(input(''))
                 os.system('cls' if os.name == 'nt' else 'clear')   
 
+                # Pemrosesan transaksi
                 if (proses_transaksi == 'y') and (saldo>=total_isi_ulang) :
                     saldo -= total_isi_ulang
                     print('HARAP MENUNGGU')
@@ -502,6 +518,7 @@ if (bahasa == 1) :
                     time.sleep(2)
                     os.system('cls' if os.name == 'nt' else 'clear') 
                     
+                    # Mencetak struk transaksi pembayaran telepon/HP
                     print('=====================BANK TPB SUKSES======================')
                     print('=================PEMBELIAN PULSA PRABAYAR=================')
                     waktu = datetime.now().isoformat(' ', 'seconds')
@@ -522,6 +539,8 @@ if (bahasa == 1) :
                         pilihan = 0
                     else :
                         pilihan = 10
+
+                # Kondisi ketika saldo tidak mencukupi
                 elif (proses_transaksi == 'y') and (saldo<total_isi_ulang) :
                     print('MOHON MAAF SALDO ANDA TIDAK MENCUKUPI')
                     print('APAKAH ANDA MAU MELAKUKAN TRANSAKSI LAIN?')
@@ -533,11 +552,14 @@ if (bahasa == 1) :
                     else :
                         pilihan = 10
                         os.system('cls' if os.name == 'nt' else 'clear') 
+
+                # Kembali ke menu utama
                 else :
                     print('MOHON TUNGGU SEBENTAR')
                     print('ANDA AKAN DIALIHKAN KE MENU UTAMA')
                     time.sleep(1)
                     pilihan = 0
+            # Pembayaran PLN
             elif (pilih_pembayaran == 2) :
                 print('MASUKKAN NOMOR METER ANDA')
                 nomor_meter     = int(input(''))
@@ -548,6 +570,7 @@ if (bahasa == 1) :
                 time.sleep(1)
                 os.system('cls' if os.name == 'nt' else 'clear')   
 
+                # Menampilkan data listrik user
                 print('===========PEMBELIAN LISTRIK PRABAYAR===========')
                 print(f'Nomor Meter         : {nomor_meter}')
                 print(f'IDPEL               : {id_pelanggan}')
@@ -561,6 +584,8 @@ if (bahasa == 1) :
                     '3' : 100000,           '7' : 5000000,
                     '4' : 200000,           '8' : 10000000,
                 }
+
+                # Memilih nominal pengisian
                 print('PILIH JUMLAH NOMIMAL')
                 print('1. 20.000            5. 500.000')
                 print('2. 50.000            6. 1.000.000')
@@ -568,11 +593,13 @@ if (bahasa == 1) :
                 print('4. 200.000           8. 10.000.000')
                 print('BIAYA ADMIN RP 1.000')
 
+                # Inisialisasi data untuk struk
                 nominal_isi_ulang = str(input(''))
                 admin_bank = 1000
                 total_isi_ulang = daftar_pembelian[nominal_isi_ulang] + admin_bank
                 os.system('cls' if os.name == 'nt' else 'clear')   
 
+                # Kondisi ketika saldo mencukupi
                 if (saldo>=total_isi_ulang) :
                     print('HARAP MENUNGGU')
                     print('TRANSAKSI ANDA SEDANG DIPROSES')
@@ -583,6 +610,10 @@ if (bahasa == 1) :
                     print('TRANSAKSI TELAH BERHASIL')
                     print('BERIKUT ADALAH STRUK ANDA')
                     print('')
+                    time.sleep(1.5)
+                    os.system('cls' if os.name == 'nt' else 'clear') 
+
+                    # Mencetak struk pembayaran listrik
                     print('=====================BANK TPB SUKSES======================')
                     print('============STRUK PEMBELIAN LISTRIK PRABAYAR==============')
                     typing_effect(f'Nomor meter         : {nomor_meter}')
@@ -617,6 +648,7 @@ if (bahasa == 1) :
                     else :
                         pilihan = 10
                         os.system('cls' if os.name == 'nt' else 'clear') 
+            # Menu pembayaran PDAM
             elif (pilih_pembayaran == 3) :
                 print('MASUKKAN KODE PERUSAHAAN')
                 print('DIIKUTI NOMOR PELANGGAN ANDA')
@@ -627,7 +659,7 @@ if (bahasa == 1) :
 
                 status_kode = str(input('Apakah anda ingin melihat daftar kode air minum/PDAM (y/n)? '))
                 os.system('cls' if os.name == 'nt' else 'clear')   
-
+                
                 kode_perusahaan = {
                     401 : 'PAM KOTA BOGOR'   , 406 : 'PAM KOTA CIREBON',
                     402 : 'PAM KOTA CIANJUR' , 407 : 'PAM KOTA SUBANG' ,
@@ -635,6 +667,8 @@ if (bahasa == 1) :
                     404 : 'PAM KOTA SUMEDANG', 409 : 'PAM KOTA DEPOK'  ,
                     405 : 'PAM KOTA SUKABUMI', 410 : 'PAM KOTA BANDUNG',
                 }
+
+                # Menampilkan daftar PDAM
                 if (status_kode == 'y') :
                     print('DAFTAR KODE PERUSAHAAN')
                     print('PAM KOTA BOGOR               452')
@@ -649,7 +683,8 @@ if (bahasa == 1) :
                     print('PAM KOTA BANDUNG             499')
                     time.sleep(7)
                     os.system('cls' if os.name == 'nt' else 'clear') 
-                    
+                
+                # Memasukkan data pelanggan
                 print('MASUKKAN KODE PERUSAHAAN')
                 print('DIIKUTI NOMOR PELANGGAN ANDA')
                 print('CONTOH')
@@ -657,6 +692,8 @@ if (bahasa == 1) :
                 print('No Pelanggan     : 1234567890')
                 print('Tekan            : 13001234567890') 
                 print('')
+
+                # Inisialisasi dan perhitungan nilai untuk di struk
                 nomor_pelanggan = str(input(''))
                 os.system('cls' if os.name == 'nt' else 'clear')   
                 tagihan       = random.randint(0,saldo-1000)
@@ -668,6 +705,7 @@ if (bahasa == 1) :
                 time.sleep(2)
                 os.system('cls' if os.name == 'nt' else 'clear')   
 
+                # Konfirmasi data-data transaksi
                 print('---------------------------------------------------')
                 print('KONFIRMASI PEMBAYARAN')
                 print(f'TAGIHAN {kode_perusahaan[nomor_pelanggan[:3]]}')
@@ -680,7 +718,9 @@ if (bahasa == 1) :
                 print('')
 
                 konfirmasi_pembayaran = str(input('Ingin Melanjutkan Pembayaran (y/n)? '))
-                os.system('cls' if os.name == 'nt' else 'clear')   
+                os.system('cls' if os.name == 'nt' else 'clear')
+
+                # Mencetak struk pembayaran PDAM   
                 if(konfirmasi_pembayaran == 'y') and (saldo>=total_bayar):
                     print('HARAP MENUNGGU')
                     print('TRANSAKSI ANDA SEDANG DIPROSES')
@@ -729,6 +769,7 @@ if (bahasa == 1) :
                     os.system('cls' if os.name == 'nt' else 'clear') 
                     pilihan = 0
 
+        # Mengubah PIN
         elif (pilihan == 5) :
             status_pin_masuk = False
             while status_pin_masuk == False :
@@ -760,6 +801,7 @@ if (bahasa == 1) :
                 else :
                     print('PIN anda salah')
                     
+    # Keluar dari ATM
     print('Silakan Ambil Kartu Anda')
     print('')
     time.sleep(0.3)
