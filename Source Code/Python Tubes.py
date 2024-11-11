@@ -23,6 +23,29 @@ lanjut                          = menyimpan pilihan apakah pengguna ingin melanj
 tarik                           = menyimpan pilihan jumlah uang yang ingin ditarik oleh pengguna
 receipt                         = menyimpan pilihan apakah pengguna ingin mencetak struk atau tidak
 status_tarik                    = menyimpan status penarikan pengguna ketika memilih pilihan "5. JUMLAH LAIN" di menu penarikan tunai
+cek_kode_bank                   = menyimpan pilihan pengguna apakah ingin cek kode bank atau tidak
+kumpulan_bank                   = array yang menyimpan bank-bank yang tersedia
+status_transfer                 = menyimpan status transfer dari pengguna
+rekening_tujuan                 = menyimpan rekening tujuan 
+kode_bank                       = menyimpan kode bank dari rekening tujuan
+nama_penerima                   = menyimpan nama penerima dari transfer
+nominal_transfer                = menyimpan nomimal yang akan ditransfer kepada rekening penerima
+status_transfer                 = menyimpan pilihan pengguna apakah ingin melakukan transfer atau tidak
+pilih_pembayaran                = menyimpan pilihan menu pembayaran yang ingin digunakan oleh pengguna
+nomor_hp                        = menyimpan nomor telepon genggam dari pengguna
+daftar_pembelian                = menyimpan nomor nomimal voucher pulsa yang dapat dipilih oleh pengguna
+nominal_isi_ulang               = menyimpan nominal isi ualng yang dipilih oleh pengguna
+admin_bank                      = menyimpan nomimal admin bank 
+total_isi_ulang                 = menyimpan isi total biaya isi ulang pulsa yang harus dibayar pengguna
+proses_transaksi                = menyimpan konfirmasi permintaan pengguna untuk membeli pulsa prabayar
+nomor_meter                     = menyimpan nomor meteran listrik pengguna
+id_pelanggan                    = menyimpan nomor id listrik pelanggan/pengguna
+waktu                           = menyimpan waktu ketika pengguna melakukan transaksi 
+status_kode                     = menyimpan pilihan pengguna apakah ingin melihat kode PAM atau tidak
+nomor_pelanggan                 = menyimpan nomor PAM/Air pelanggan
+tagihan                         = menyimpan tagihan yang dimiliki oleh pengguna
+total_bayar                     = menyimpan total tagihan PAM yang dimiliki oleh pengguna
+konfirmasi_pembayaran           = menyimpan pilihan pengguna apakah ingin melakukan pembayaran PAM atau tidak
 
 terakhir line 226
 '''
