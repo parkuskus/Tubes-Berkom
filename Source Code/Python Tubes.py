@@ -7,6 +7,24 @@ Deskripsi : Simulasi ATM (Anjungan Tunai Mandiri / Automatic Teller Machine) bah
             cek saldo, penarikan tunai, transfer antarbank, pembayaran/pembelian, dan ganti pin.
 
 KAMUS
+nama_lengkap                    = menyimpan nama lengkap pengguna
+tanggal_lahir                   = menyimpan tanggal lahir pengguna
+status_pin                      = menyimpan status pin yang telah dimasukkan apakh benar atau tidak
+pin                             = menyimpan pin dari pengguna
+pin_konfirmasi                  = menyimpan pin pengguna saat mengonfirmasi pin yang telah dibuat
+saldo                           = menyimpan saldo pengguna
+bahasa                          = menyimpan pilihan bahasa yang dipilih pengguna
+counter                         = menyimpan percobaan yang tersisa ketika pengguna salah memasukkan PIN
+status_pin_masuk                = menyimpan status pin yang dimasukkan ketika pengguna akan masuk ke ATM
+nama_lengkap_konfirmasi         = menyimpan nama lengkap pengguna ketika proses recovery akun
+tanggal_lahir konfirmasi        = menyimpan tanggal lahir pengguna ketika recovery akun
+pilihan                         = menyimpan pilihan fitur ATM yang dipilih oleh pengguna
+lanjut                          = menyimpan pilihan apakah pengguna ingin melanjutkan transaksi atau tidak
+tarik                           = menyimpan pilihan jumlah uang yang ingin ditarik oleh pengguna
+receipt                         = menyimpan pilihan apakah pengguna ingin mencetak struk atau tidak
+status_tarik                    = menyimpan status penarikan pengguna ketika memilih pilihan "5. JUMLAH LAIN" di menu penarikan tunai
+
+terakhir line 226
 '''
 import os
 import time
