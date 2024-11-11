@@ -1,5 +1,5 @@
 ''' 
-Author : Kelompok 9
+Author             : Kelompok 9
 Tanggal Pengerjaan : 3-10 November 2024
 
 Program ATM Bank TPB SUKSES 
@@ -47,7 +47,6 @@ tagihan                         = menyimpan tagihan yang dimiliki oleh pengguna
 total_bayar                     = menyimpan total tagihan PAM yang dimiliki oleh pengguna
 konfirmasi_pembayaran           = menyimpan pilihan pengguna apakah ingin melakukan pembayaran PAM atau tidak
 
-terakhir line 226
 '''
 import os
 import time
