@@ -478,6 +478,7 @@ if (bahasa == 1) :
                     time.sleep(2)
                     os.system('cls' if os.name == 'nt' else 'clear')   
                     waktu = datetime.now().isoformat(' ', 'seconds')
+                    saldo -= nominal_transfer
 
                     # Mencetak struk transfer
                     print('====================================================')
@@ -656,6 +657,7 @@ if (bahasa == 1) :
                     time.sleep(2)
                     os.system('cls' if os.name == 'nt' else 'clear')  
 
+                    saldo -= total_isi_ulang
                     waktu = datetime.now().isoformat(' ', 'seconds')
                     print('TRANSAKSI TELAH BERHASIL')
                     print('BERIKUT ADALAH STRUK ANDA')
@@ -671,7 +673,7 @@ if (bahasa == 1) :
                     typing_effect(f'Nama Lengkap        : {nama_lengkap}')
                     typing_effect(f'Jumlah              : {daftar_pembelian[nominal_isi_ulang]:,}'.replace(',', '.'))                    
                     typing_effect(f'Total Bayar         : {total_isi_ulang:,}'.replace(',', '.'))
-                    typing_effect(f'Stroom/Token        : {random.randint(1000,9999)}, {random.randint(1000,9999)}, {random.randint(1000,9999)}, {random.randint(1000,9999)}')
+                    typing_effect(f'Stroom/Token        : {random.randint(1000,9999)} {random.randint(1000,9999)} {random.randint(1000,9999)} {random.randint(1000,9999)}')
                     typing_effect(f'Admin Bank          : {admin_bank:,}'.replace(',', '.'))
                     typing_effect(f'Waktu Transaksi     : {waktu}')
                     print('=========Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1=======')
@@ -776,6 +778,7 @@ if (bahasa == 1) :
                     print('TRANSAKSI ANDA SEDANG DIPROSES')
                     time.sleep(2)
                     os.system('cls' if os.name == 'nt' else 'clear')
+                    saldo -= total_bayar
                     waktu = datetime.now().isoformat(' ', 'seconds')
 
                     print('TRANSAKSI TELAH BERHASIL')
