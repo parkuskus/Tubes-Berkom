@@ -1,10 +1,10 @@
 ''' 
-Author             : Kelompok 9
-Tanggal Pengerjaan : 3-10 November 2024
+Author              : Kelompok 9
+Tanggal Pengerjaan  : 3-10 November 2024
 
-Program ATM Bank TPB SUKSES 
-Deskripsi : Simulasi ATM (Anjungan Tunai Mandiri / Automatic Teller Machine) bahasa Indonesia dan Inggris dengan fitur-fitur berupa
-            cek saldo, penarikan tunai, transfer antarbank, pembayaran/pembelian, dan ganti pin.
+PROGRAM ATM BANK TPB SUKSES 
+Deskripsi           : Simulasi ATM (Anjungan Tunai Mandiri / Automatic Teller Machine) bahasa Indonesia dan Inggris dengan fitur-fitur berupa
+                      cek saldo, penarikan tunai, transfer antarbank, pembayaran/pembelian, dan ganti pin.
 
 KAMUS
 nama_lengkap                    = menyimpan nama lengkap pengguna
