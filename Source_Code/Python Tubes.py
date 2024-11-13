@@ -450,10 +450,10 @@ if (bahasa == 1) :
                 rekening_tujuan = str(input('Nomor Rekening Tujuan: '))
                 kode_bank = rekening_tujuan[:3]
                 nama_penerima = str(input('Nama Penerima: '))
-                nomimal_transfer = int(input('Masukkan Jumlah Nominal Yang  Akan Ditransfer: '))
-                while (nomimal_transfer>saldo) :
+                nominal_transfer = int(input('Masukkan Jumlah Nominal Yang  Akan Ditransfer: '))
+                while (nominal_transfer>saldo) :
                     print('MOHON MAAF, SALDO ANDA TIDAK MENCUKUPI')
-                    nomimal_transfer = int(input('Masukkan Kembali Nominal Yang Akan Ditransfer: '))
+                    nominal_transfer = int(input('Masukkan Kembali Nominal Yang Akan Ditransfer: '))
 
                 print('HARAP MENUNGGU')
                 print('TRANSAKSI ANDA SEDANG DIPROSES')
@@ -466,7 +466,7 @@ if (bahasa == 1) :
                 print(f'Bank            : {kumpulan_bank[kode_bank]}')
                 print(f'Tujuan          : {rekening_tujuan}')
                 print(f'Penerima        : {nama_penerima}')
-                print(f'Jumlah Transfer : Rp{nomimal_transfer:,}'.replace(',', '.'))
+                print(f'Jumlah Transfer : Rp{nominal_transfer:,}'.replace(',', '.'))
                 print('---------------------------------------------------')
 
                 status_transfer= str(input(('Apakah data sudah sesuai (y/n)?    :')))
@@ -486,7 +486,7 @@ if (bahasa == 1) :
                     typing_effect(f'Bank            : {kumpulan_bank[kode_bank]}')
                     typing_effect(f'Tujuan          : {rekening_tujuan}')
                     typing_effect(f'Penerima        : {nama_penerima}')
-                    typing_effect(f'Jumlah Transfer : Rp{nomimal_transfer:,}'.replace(',', '.'))
+                    typing_effect(f'Jumlah Transfer : Rp{nominal_transfer:,}'.replace(',', '.'))
                     typing_effect(f'Waktu Transaksi : {waktu}')
                     print('====================================================')
                     print('')
@@ -1190,10 +1190,10 @@ elif(bahasa == 2):
                 rekening_tujuan = str(input('Destination Account Number: '))
                 kode_bank = rekening_tujuan[:3]
                 nama_penerima = str(input('Transferee Name: '))
-                nomimal_transfer = int(input('Enter The Amount You Wish To Transfer: '))
-                while (nomimal_transfer>saldo) :
+                nominal_transfer = int(input('Enter The Amount You Wish To Transfer: '))
+                while (nominal_transfer>saldo) :
                     print('SORRY, YOUR BALANCE IS NOT ENOUGH')
-                    nomimal_transfer = int(input('Renter The Amount You Wish To Transfer: '))
+                    nominal_transfer = int(input('Renter The Amount You Wish To Transfer: '))
 
                 print('PLEASE WAIT')
                 print('YOUR TRANSACTION IS BEING PROCESSED')
@@ -1206,7 +1206,7 @@ elif(bahasa == 2):
                 print(f'Bank            : {kumpulan_bank[kode_bank]}')
                 print(f'Destination     : {rekening_tujuan}')
                 print(f'Transferee      : {nama_penerima}')
-                print(f'Transfer Amount : Rp{nomimal_transfer:,}'.replace(',', '.'))
+                print(f'Transfer Amount : Rp{nominal_transfer:,}'.replace(',', '.'))
                 print('---------------------------------------------------')
 
                 status_transfer= str(input(('Is the data correct? (y/n)    :')))
@@ -1218,6 +1218,7 @@ elif(bahasa == 2):
                     time.sleep(2)
                     os.system('cls' if os.name == 'nt' else 'clear')   
                     waktu = datetime.now().isoformat(' ', 'seconds')
+                    saldo -= nominal_transfer
 
                     # Mencetak struk transfer
                     print('====================================================')
@@ -1225,7 +1226,7 @@ elif(bahasa == 2):
                     typing_effect(f'Bank             : {kumpulan_bank[kode_bank]}')
                     typing_effect(f'Destination      : {rekening_tujuan}')
                     typing_effect(f'Transferee       : {nama_penerima}')
-                    typing_effect(f'Transfer Amount  : Rp{nomimal_transfer:,}'.replace(',', '.'))
+                    typing_effect(f'Transfer Amount  : Rp{nominal_transfer:,}'.replace(',', '.'))
                     typing_effect(f'Transaction Time : {waktu}')
                     print('====================================================')
                     print('')
@@ -1397,6 +1398,7 @@ elif(bahasa == 2):
                     os.system('cls' if os.name == 'nt' else 'clear')  
 
                     waktu = datetime.now().isoformat(' ', 'seconds')
+                    saldo -= total_isi_ulang
                     print('TRANSACTION COMPLETED')
                     print('HERE IS YOUR RECEIPT')
                     print('')
@@ -1516,6 +1518,7 @@ elif(bahasa == 2):
                     time.sleep(2)
                     os.system('cls' if os.name == 'nt' else 'clear')
                     waktu = datetime.now().isoformat(' ', 'seconds')
+                    saldo -= total_bayar
 
                     print('TRANSACTION COMPLETED')
                     print('Here is your receipt')
