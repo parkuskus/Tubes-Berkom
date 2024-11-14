@@ -56,7 +56,7 @@ from datetime import datetime
 
 
 #Fungsi Typing Effect di Terminal
-def typing_effect(text, delay=0.05):
+def typing_effect(text, delay=0.025):
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
@@ -237,7 +237,7 @@ if (bahasa == 1) :
             print('Lanjut Transaksi?')
             print('1. Ya')
             print('2. Tidak')
-            lanjut = int(input())
+            lanjut = int(input('Masukkan Respon Anda: '))
             if lanjut == 1:
                 pilihan = 0
             else:
@@ -253,7 +253,8 @@ if (bahasa == 1) :
             print('3. Rp   500.000')
             print('4. Rp 1.000.000')
             print('5. JUMLAH LAIN')
-            tarik = int(input())
+            print('')
+            tarik = int(input('Masukkan Respon Anda: '))
             os.system('cls' if os.name == 'nt' else 'clear')
             
             # Penarikan Tunai Cepat
@@ -273,7 +274,8 @@ if (bahasa == 1) :
                     print('Apakah anda ingin mencetak receipt?')
                     print('1. Ya')
                     print('2. Tidak')
-                    receipt = int(input())
+                    print('')
+                    receipt = int(input('Masukkan Respon Anda: '))
                 else:
                     print('SALDO TIDAK MENCUKUPI')
                     print('')     
@@ -292,7 +294,8 @@ if (bahasa == 1) :
                     print('Apakah anda ingin mencetak receipt?')
                     print('1. Ya')
                     print('2. Tidak')
-                    receipt = int(input())
+                    print('')
+                    receipt = int(input('Masukkan Respon Anda: '))
                 else:
                     print('SALDO TIDAK MENCUKUPI')
                     print('')     
@@ -311,7 +314,8 @@ if (bahasa == 1) :
                     print('Apakah anda ingin mencetak receipt?')
                     print('1. Ya')
                     print('2. Tidak')
-                    receipt = int(input())
+                    print('')
+                    receipt = int(input('Masukkan Respon Anda: '))
                 else:
                     print('SALDO TIDAK MENCUKUPI')
                     print('')    
@@ -330,7 +334,8 @@ if (bahasa == 1) :
                     print('Apakah anda ingin mencetak receipt?')
                     print('1. Ya')
                     print('2. Tidak')
-                    receipt = int(input())
+                    print('')
+                    receipt = int(input('Masukkan Respon Anda: '))
                 else:
                     print('SALDO TIDAK MENCUKUPI')
                     print('')    
@@ -357,6 +362,7 @@ if (bahasa == 1) :
                     else: 
                         print(f'NOMINAL YANG ANDA INPUT ADALAH Rp{tunai:,}'.replace(',', '.'))
                         print('APAKAH ANDA YAKIN?')
+                        print('')
                         konfirmasi_tarik = input('Konfirmasi (y/n): ')
                         if konfirmasi_tarik == 'y':
                             status_tarik = True
@@ -392,7 +398,8 @@ if (bahasa == 1) :
             print('Lanjut Transaksi?')
             print('1. Ya')
             print('2. Tidak')
-            lanjut = int(input())
+            print('')
+            lanjut = int(input('Masukkan Respon Anda: '))
             if lanjut == 1:
                 pilihan = 0
             else:
@@ -401,15 +408,16 @@ if (bahasa == 1) :
             
         # Menu transfer
         elif (pilihan == 3) :
-            typing_effect('===================ATM TRANSFER===================')
-            typing_effect('==============MASUKKAN KODE BANK DAN==============')
-            typing_effect('============NOMOR REKENING TUJUAN ANDA============')
-            print('No. Kode Bank Diikuti Oleh No. Rek Tujuan')
-            print('3 nomor diawal kode bank diikuti dengan 5 nomor rekening bank')
-            print('Cth. 42612345')
+            print('===================ATM TRANSFER===================')
+            print('==============MASUKKAN KODE BANK DAN==============')
+            print('============NOMOR REKENING TUJUAN ANDA============')
+            typing_effect('No. Kode Bank Yang Tersedia Diikuti Oleh No. Rek Tujuan')
+            typing_effect('3 nomor diawal kode bank diikuti dengan 5 nomor rekening bank')
+            typing_effect('Cth. 42612345')
+            print('')
 
             print('Apakah anda ingin melihat kode bank terlebih dahulu (y/n)?')
-            cek_kode_bank = str(input(''))
+            cek_kode_bank = str(input('Masukkan Respon Anda: '))
 
             # Mencetak daftar kode bank
             os.system('cls' if os.name == 'nt' else 'clear') 
@@ -443,6 +451,7 @@ if (bahasa == 1) :
             print('3 nomor diawal kode bank diikuti dengan 5 nomor rekening bank')
             print('Cth. 00112345')
             print('')
+            print('')
             status_transfer = 'n'
 
             # Memasukkan nomor rekening tujuan
@@ -469,7 +478,9 @@ if (bahasa == 1) :
                 print(f'Jumlah Transfer : Rp{nominal_transfer:,}'.replace(',', '.'))
                 print('---------------------------------------------------')
 
-                status_transfer= str(input(('Apakah data sudah sesuai (y/n)?    :')))
+                status_transfer = 'n'
+                print('Apakah data sudah sesuai (y/n)? ')
+                status_transfer = str(input('Masukkan Respon Anda: '))
 
                 os.system('cls' if os.name == 'nt' else 'clear') 
                 if (status_transfer == 'y') :
@@ -481,14 +492,14 @@ if (bahasa == 1) :
                     saldo -= nominal_transfer
 
                     # Mencetak struk transfer
-                    print('====================================================')
+                    print('------------------------------------------------------')
                     typing_effect('TRANSFER ATM')
                     typing_effect(f'Bank            : {kumpulan_bank[kode_bank]}')
                     typing_effect(f'Tujuan          : {rekening_tujuan}')
                     typing_effect(f'Penerima        : {nama_penerima}')
                     typing_effect(f'Jumlah Transfer : Rp{nominal_transfer:,}'.replace(',', '.'))
                     typing_effect(f'Waktu Transaksi : {waktu}')
-                    print('====================================================')
+                    print('------------------------------------------------------')
                     print('')
                     time.sleep(3)
                     os.system('cls' if os.name == 'nt' else 'clear')   
@@ -509,7 +520,8 @@ if (bahasa == 1) :
             print('1. Telepon/HP')
             print('2. Listrik/PLN')
             print('3. Air/PDAM')
-            pilih_pembayaran = int(input(''))
+            print('')
+            pilih_pembayaran = int(input('Masukkan Respon Anda: '))
             os.system('cls' if os.name == 'nt' else 'clear')   
 
             # Pembayaran telepon/HP
@@ -517,7 +529,8 @@ if (bahasa == 1) :
                 print('SILAHKAN MASUKKAN')
                 print('NOMOR PELANGGAN/NOMOR')
                 print('TAGIHAN/KODE PEMBAYARAN/NOMOR HANDPHONE ANDA')
-                nomor_hp = int(input(''))
+                print('')
+                nomor_hp = int(input('Nomor Telepon: '))
                 os.system('cls' if os.name == 'nt' else 'clear')   
 
                 print('HARAP MENUNGGU')
@@ -538,22 +551,21 @@ if (bahasa == 1) :
                 print('2. 25.000            6. 200.000')
                 print('3. 50.000            7. 300.000')
                 print('4. 100.000           8. LAINNYA')
-                print('BIAYA ADMIN RP 1.000')
                 print('')
 
-                nominal_isi_ulang = str(input(''))
+                nominal_isi_ulang = str(input('Pilih nominal isi ulang anda: '))
                 admin_bank = 1000
                 total_isi_ulang = daftar_pembelian[nominal_isi_ulang] + admin_bank
 
                 # Konfirmasi sebelum transaksi
                 os.system('cls' if os.name == 'nt' else 'clear')   
-                print('===========PEMBELIAN PULSA PRABAYAR===========')
+                print('-------------------PEMBELIAN PULSA PRABAYAR-------------------')
                 print(f'Nomor Handphone     : {nomor_hp}')
                 print(f'Jumlah              : {daftar_pembelian[nominal_isi_ulang]:,}'.replace(',', '.'))
                 print(f'TOTAL               : {total_isi_ulang:,}'.replace(',', '.'))
                 print('')
                 print('PROSES TRANSAKSI (y/n)? ')
-                proses_transaksi = str(input(''))
+                proses_transaksi = str(input('Masukkan Respon Anda: '))
                 os.system('cls' if os.name == 'nt' else 'clear')   
 
                 # Pemrosesan transaksi
@@ -578,7 +590,6 @@ if (bahasa == 1) :
                     typing_effect(f'Jumlah              : {daftar_pembelian[nominal_isi_ulang]:,}'.replace(',', '.'))
                     typing_effect(f'TOTAL               : {total_isi_ulang:,}'.replace(',', '.'))
                     typing_effect(f'Waktu Transaksi     : {waktu}')
-
                     print('=========Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1=======')
                     print('===========PROVIDER BERKOM MENYATAKAN STRUK INI===========')
                     print('=============SEBAGAI BUKTI PEMBAYARAN YANG SAH============')
@@ -622,7 +633,7 @@ if (bahasa == 1) :
                 os.system('cls' if os.name == 'nt' else 'clear')   
 
                 # Menampilkan data listrik user
-                print('===========PEMBELIAN LISTRIK PRABAYAR===========')
+                print('---------------PEMBELIAN LISTRIK PRABAYAR---------------')
                 print(f'Nomor Meter         : {nomor_meter}')
                 print(f'IDPEL               : {id_pelanggan}')
                 print(f'Nama                : {nama_lengkap}')
@@ -643,9 +654,10 @@ if (bahasa == 1) :
                 print('3. 100.000           7. 5.000.000')
                 print('4. 200.000           8. 10.000.000')
                 print('BIAYA ADMIN RP 1.000')
+                print('')
 
                 # Inisialisasi data untuk struk
-                nominal_isi_ulang = str(input(''))
+                nominal_isi_ulang = str(input('Pilih nominal isi ulang anda: '))
                 admin_bank = 1000
                 total_isi_ulang = daftar_pembelian[nominal_isi_ulang] + admin_bank
                 os.system('cls' if os.name == 'nt' else 'clear')   
@@ -692,6 +704,7 @@ if (bahasa == 1) :
                 else :
                     print('MOHON MAAF SALDO ANDA TIDAK MENCUKUPI')
                     print('APAKAH ANDA MAU MELAKUKAN TRANSAKSI LAIN?')
+                    print('')
                     
                     status_transaksi = str(input('Konfirmasi (y/n): '))
                     if (status_transaksi == 'y') :
@@ -702,12 +715,13 @@ if (bahasa == 1) :
                         os.system('cls' if os.name == 'nt' else 'clear') 
             # Menu pembayaran PDAM
             elif (pilih_pembayaran == 3) :
-                print('MASUKKAN KODE PERUSAHAAN')
-                print('DIIKUTI NOMOR PELANGGAN ANDA')
-                print('CONTOH')
-                print('Kode Perusahaan  : 1300')
-                print('No Pelanggan     : 1234567890')
-                print('Tekan            : 13001234567890')
+                typing_effect('MASUKKAN KODE PERUSAHAAN')
+                typing_effect('DIIKUTI NOMOR PELANGGAN ANDA')
+                typing_effect('CONTOH')
+                typing_effect('Kode Perusahaan  : 401')
+                typing_effect('No Pelanggan     : 1234567890')
+                typing_effect('Tekan            : 4011234567890')
+                print('')
 
                 status_kode = str(input('Apakah anda ingin melihat daftar kode air minum/PDAM (y/n)? '))
                 os.system('cls' if os.name == 'nt' else 'clear')   
@@ -746,7 +760,7 @@ if (bahasa == 1) :
                 print('')
 
                 # Inisialisasi dan perhitungan nilai untuk di struk
-                nomor_pelanggan = str(input(''))
+                nomor_pelanggan = str(input('Masukkan nomor pelanggan: '))
                 os.system('cls' if os.name == 'nt' else 'clear')   
                 tagihan       = random.randint(0,saldo-1000)
                 biaya_admin   = 1000
@@ -783,6 +797,9 @@ if (bahasa == 1) :
 
                     print('TRANSAKSI TELAH BERHASIL')
                     print('Berikut adalah struk anda')
+                    time.sleep(2)
+                    os.system('cls' if os.name == 'nt' else 'clear')
+
                     print('=====================BANK TPB SUKSES======================')
                     print('================STRUK PEMBAYARAN AIR/PDAM===============')
                     typing_effect(f'No pelanggan        : {nomor_pelanggan}')
@@ -796,7 +813,7 @@ if (bahasa == 1) :
                     print('=============SEBAGAI BUKTI PEMBAYARAN YANG SAH============')
                     print('')
                     print('APAKAH ANDA INGIN MELANJUTKAN TRANSAKSI (y/n)?')
-                    lanjut_transaksi = str(input(''))
+                    lanjut_transaksi = str(input('Masukkan Respon Anda: '))
 
                     if (lanjut_transaksi == 'y') :
                         pilihan = 0
@@ -843,7 +860,7 @@ if (bahasa == 1) :
                             print('Lanjut Transaksi?')
                             print('1. Ya')
                             print('2. Tidak')
-                            lanjut = int(input())
+                            lanjut = int(input('Masukkan Respon Anda: '))
                             if lanjut == 1:
                                 pilihan = 0
                             else:
@@ -1463,16 +1480,16 @@ elif(bahasa == 2):
                 # Menampilkan daftar PDAM
                 if (status_kode == 'y') :
                     print('COMPANY CODES LIST')
-                    print('PAM KOTA BOGOR               452')
-                    print('PAM KOTA CIANJUR             453')
-                    print('PAM KOTA KUNINGAN            456')
-                    print('PAM KOTA SUMEDANG            458')
-                    print('PAM KOTA SUKABUMI            465')
-                    print('PAM KOTA CIREBON             476')
-                    print('PAM KOTA SUBANG              480')
-                    print('PAM KOTA CILEGON             489')
-                    print('PAM KOTA DEPOK               494')
-                    print('PAM KOTA BANDUNG             499')
+                    print('PAM KOTA BOGOR               401')
+                    print('PAM KOTA CIANJUR             402')
+                    print('PAM KOTA KUNINGAN            403')
+                    print('PAM KOTA SUMEDANG            404')
+                    print('PAM KOTA SUKABUMI            405')
+                    print('PAM KOTA CIREBON             406')
+                    print('PAM KOTA SUBANG              407')
+                    print('PAM KOTA CILEGON             408')
+                    print('PAM KOTA DEPOK               409')
+                    print('PAM KOTA BANDUNG             410')
                     time.sleep(7)
                     os.system('cls' if os.name == 'nt' else 'clear') 
                 
