@@ -478,7 +478,7 @@ if (bahasa == 1) :
                     time.sleep(2)
                     os.system('cls' if os.name == 'nt' else 'clear')   
                     waktu = datetime.now().isoformat(' ', 'seconds')
-                    saldo -= nomimal_transfer
+                    saldo -= nominal_transfer
 
                     # Mencetak struk transfer
                     print('====================================================')
