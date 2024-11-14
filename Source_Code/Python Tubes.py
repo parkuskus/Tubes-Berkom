@@ -1498,7 +1498,7 @@ elif(bahasa == 2):
                 print('FOLLOWED BY YOUR CUSTOMER NUMBER')
                 print('EXAMPLE')
                 print('Company Code     : 1300')
-                print('Customer Number    : 1234567890')
+                print('Customer Number  : 1234567890')
                 print('Tekan            : 13001234567890')
 
                 # Inisialisasi dan perhitungan nilai untuk di struk
