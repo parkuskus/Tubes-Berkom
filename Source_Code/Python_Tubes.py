@@ -756,7 +756,7 @@ if (bahasa == 1) :
                 print('CONTOH')
                 print('Kode Perusahaan  : 401')
                 print('No Pelanggan     : 1234567890')
-                print('Tekan            : 13001234567890') 
+                print('Tekan            : 4011234567890') 
                 print('')
 
                 # Inisialisasi dan perhitungan nilai untuk di struk
@@ -807,7 +807,7 @@ if (bahasa == 1) :
                     typing_effect(f'Tagihan             : {tagihan}')
                     typing_effect(f'Biaya admin         : {biaya_admin:,}'.replace(',', '.')) 
                     typing_effect(f'Total Bayar         : {total_bayar:,}'.replace(',', '.')) 
-                    typing_effect(f'Waktu Transaksi     : {waktu:,}'.replace(',', '.')) 
+                    typing_effect(f'Waktu Transaksi     : {waktu}') 
                     print('=========Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1=======')
                     print('=================PDAM MENYATAKAN STRUK INI=================')
                     print('=============SEBAGAI BUKTI PEMBAYARAN YANG SAH============')
@@ -1463,7 +1463,7 @@ elif(bahasa == 2):
                 print('FOLLOWED BY YOUR CUSTOMER NUMBER')
                 print('EXAMPLE')
                 print('Company Code     : 1300')
-                print('Customer Number    : 1234567890')
+                print('Customer Number  : 1234567890')
                 print('Tekan            : 13001234567890')
 
                 status_kode = str(input('Do you wish to see the water/PDAM codes (y/n)? '))
@@ -1499,7 +1499,7 @@ elif(bahasa == 2):
                 print('EXAMPLE')
                 print('Company Code     : 1300')
                 print('Customer Number  : 1234567890')
-                print('Tekan            : 13001234567890')
+                print('Tekan            : 4011234567890')
 
                 # Inisialisasi dan perhitungan nilai untuk di struk
                 nomor_pelanggan = str(input(''))
@@ -1546,7 +1546,7 @@ elif(bahasa == 2):
                     typing_effect(f'Bill                : {tagihan}')
                     typing_effect(f'Admin fee           : {biaya_admin:,}'.replace(',', '.')) 
                     typing_effect(f'TOTAL               : {total_bayar:,}'.replace(',', '.')) 
-                    typing_effect(f'Transaction Time    : {waktu:,}'.replace(',', '.')) 
+                    typing_effect(f'Transaction Time    : {waktu}') 
                     print('=========Jl. Let. Jend. Purn. Dr. (HC) Mashudi No.1=======')
                     print('=================PDAM DECLARES THIS RECEIPT================')
                     print('================AS A VALID PROOF OF PURCHASE===============')
